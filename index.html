@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="个人全景漫游 · 支持多场景切换、热点跳转、手机陀螺仪">
+  <title>我的全景漫游</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vendor/psv-core.css">
+  <link rel="stylesheet" href="vendor/psv-virtual-tour.css">
+  <link rel="stylesheet" href="vendor/psv-markers.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.min.js",
+      "@photo-sphere-viewer/core": "./vendor/psv-core.module.js",
+      "@photo-sphere-viewer/virtual-tour": "./vendor/psv-virtual-tour.module.js",
+      "@photo-sphere-viewer/markers": "./vendor/psv-markers.module.js",
+      "@photo-sphere-viewer/autorotate": "./vendor/psv-autorotate.module.js",
+      "@photo-sphere-viewer/gyroscope": "./vendor/psv-gyroscope.module.js"
+    }
+  }
+  </script>
+</head>
+<body class="viewer-page">
+  <div id="app">
+    <div id="panorama"></div>
+
+    <!-- 顶部标题 -->
+    <header id="topbar">
+      <h1 id="app-title">我的全景漫游</h1>
+      <a id="edit-link" href="editor.html" title="打开编辑器">编辑</a>
+    </header>
+
+    <!-- 底部场景切换条 -->
+    <nav id="scene-bar" aria-label="场景切换"></nav>
+
+    <div id="boot-error" hidden>
+      <p>加载失败，请检查网络后刷新重试。</p>
+      <p class="boot-error-detail"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/viewer.js"></script>
+</body>
+</html>

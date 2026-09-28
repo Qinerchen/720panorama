@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>访问验证 · 我的全景漫游</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <form class="login-card" id="login-form">
+    <h1>我的全景漫游</h1>
+    <p class="login-sub">这是私人全景，请输入访问密码</p>
+    <input id="pwd" type="password" inputmode="numeric" autocomplete="current-password"
+           placeholder="访问密码" autofocus>
+    <p id="login-err" class="login-err" hidden></p>
+    <button type="submit" id="login-btn">进 入</button>
+  </form>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+  "title": "我的家 · 全景漫游",
+  "defaultScene": "living-room",
+  "scenes": [
+    {
+      "id": "living-room",
+      "name": "客厅",
+      "panorama": "panoramas/客厅_全景.jpg",
+      "thumbnail": "thumbnails/客厅_全景.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "dining-room",
+      "name": "餐厅",
+      "panorama": "panoramas/餐厅.jpg",
+      "thumbnail": "thumbnails/餐厅.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "kitchen",
+      "name": "厨房",
+      "panorama": "panoramas/厨房.jpg",
+      "thumbnail": "thumbnails/厨房.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "master-bedroom",
+      "name": "主卧",
+      "panorama": "panoramas/主卧.jpg",
+      "thumbnail": "thumbnails/主卧.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "master-bath",
+      "name": "主卫",
+      "panorama": "panoramas/主卫.jpg",
+      "thumbnail": "thumbnails/主卫.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "second-bedroom",
+      "name": "次卧",
+      "panorama": "panoramas/次卧.jpg",
+      "thumbnail": "thumbnails/次卧.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "guest-bath-foyer",
+      "name": "客卫前室",
+      "panorama": "panoramas/客卫前室.jpg",
+      "thumbnail": "thumbnails/客卫前室.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "guest-bath",
+      "name": "客卫内部",
+      "panorama": "panoramas/客卫内部.jpg",
+      "thumbnail": "thumbnails/客卫内部.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "balcony-bedroom",
+      "name": "阳台卧室",
+      "panorama": "panoramas/阳台卧室.jpg",
+      "thumbnail": "thumbnails/阳台卧室.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "balcony-east",
+      "name": "阳台东侧",
+      "panorama": "panoramas/阳台东侧.jpg",
+      "thumbnail": "thumbnails/阳台东侧.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    },
+    {
+      "id": "balcony-west",
+      "name": "阳台西侧",
+      "panorama": "panoramas/阳台西侧.jpg",
+      "thumbnail": "thumbnails/阳台西侧.jpg",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0
+      },
+      "hotspots": []
+    }
+  ]
+}

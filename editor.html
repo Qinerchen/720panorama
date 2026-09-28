@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全景编辑器</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vendor/psv-core.css">
+  <link rel="stylesheet" href="vendor/psv-virtual-tour.css">
+  <link rel="stylesheet" href="vendor/psv-markers.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.min.js",
+      "@photo-sphere-viewer/core": "./vendor/psv-core.module.js",
+      "@photo-sphere-viewer/virtual-tour": "./vendor/psv-virtual-tour.module.js",
+      "@photo-sphere-viewer/markers": "./vendor/psv-markers.module.js",
+      "@photo-sphere-viewer/autorotate": "./vendor/psv-autorotate.module.js",
+      "@photo-sphere-viewer/gyroscope": "./vendor/psv-gyroscope.module.js"
+    }
+  }
+  </script>
+</head>
+<body class="editor-page">
+  <div id="editor-app">
+    <aside id="sidebar">
+      <header class="sidebar-head">
+        <h2>全景编辑器</h2>
+        <a href="index.html">← 返回查看</a>
+      </header>
+
+      <section class="panel">
+        <div class="panel-title">场景
+          <button id="btn-add-scene" class="mini-btn" type="button">＋ 添加场景</button>
+        </div>
+        <ul id="scene-list"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">当前场景热点</div>
+        <ul id="hotspot-list"></ul>
+        <div class="panel-actions">
+          <button id="btn-add-mode" class="btn" type="button">🎯 添加热点模式</button>
+          <button id="btn-set-view" class="btn" type="button">🧭 设为初始视角</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">导出</div>
+        <div class="panel-actions">
+          <button id="btn-export" class="btn" type="button">⬇ 下载 project.json</button>
+          <button id="btn-gh-toggle" class="btn" type="button">☁ 保存到 GitHub</button>
+        </div>
+        <div id="gh-box" hidden>
+          <input id="gh-repo" type="text" placeholder="用户名/仓库（如 tom/myhome）">
+          <input id="gh-branch" type="text" placeholder="分支，默认 main" value="main">
+          <input id="gh-token" type="password" placeholder="GitHub Token（仅存本机 localStorage）">
+          <button id="btn-gh-save" class="btn primary" type="button">推送到 GitHub</button>
+          <p class="hint">Token 需要 repo 权限，只保存在你自己的浏览器里，不会上传到任何第三方。</p>
+        </div>
+        <p id="save-status" class="hint"></p>
+      </section>
+    </aside>
+
+    <main id="editor-stage">
+      <div id="editor-panorama"></div>
+      <div id="mode-banner" hidden>添加热点模式：点击全景图上要放热点的位置</div>
+      <div id="edit-tip">左侧选择场景；「添加热点模式」下点击全景添加跳转点；点击已有热点可编辑。</div>
+    </main>
+  </div>
+
+  <!-- 热点编辑弹窗 -->
+  <div id="hotspot-dialog" class="dialog-mask" hidden>
+    <form class="dialog" id="hotspot-form">
+      <h3 id="hotspot-dialog-title">添加热点</h3>
+      <label>目标场景
+        <select id="hs-target"></select>
+      </label>
+      <label>标签（可选，悬停显示）
+        <input id="hs-label" type="text" placeholder="留空则显示目标场景名">
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="btn" data-close>取消</button>
+        <button type="button" class="btn" id="hs-relocate" hidden>📍 重新定位</button>
+        <button type="button" class="btn danger btn-danger hidden">🗑 删除热点</button>
+        <button type="submit" class="btn primary">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 添加场景弹窗 -->
+  <div id="scene-dialog" class="dialog-mask" hidden>
+    <form class="dialog" id="scene-form">
+      <h3>添加场景</h3>
+      <p id="scene-dialog-empty" class="hint" hidden>panoramas/ 里的图都已被使用。</p>
+      <label>选择图片
+        <select id="scene-pick"></select>
+      </label>
+      <label>场景名称
+        <input id="scene-name" type="text" placeholder="如：书房">
+      </label>
+      <label>场景 ID（英文/数字/连字符）
+        <input id="scene-id" type="text" placeholder="如：study">
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="btn" data-close>取消</button>
+        <button type="submit" class="btn primary">添加</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="editor-mobile-tip">编辑器仅支持电脑端操作，请用 PC 浏览器打开。</div>
+
+  <script type="module" src="js/editor.js"></script>
+</body>
+</html>
