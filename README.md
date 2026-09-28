@@ -1,11 +1,41 @@
 # 我的全景漫游 · 个人版 720云
 
-纯静态（零构建、零后端）的多场景全景漫游网站，风格类似 720云：
+纯静态（零构建、零后端）的多场景全景漫游网站，风格类似 720云。
 
-- **查看器** [index.html](https://你的用户名.github.io/仓库名/)：等距圆柱全景渲染、热点跳转切换场景、底部缩略图切换条、URL 深链、自动旋转、手机陀螺仪
-- **编辑器** [editor.html](https://你的用户名.github.io/仓库名/editor.html)（仅 PC）：添加/重命名/删除场景、标注热点、设置初始视角、导出或直接推送 `project.json` 到 GitHub
+- **在线访问**：<https://qinerchen.github.io/720panorama/>（访问密码见下方"密码门"）
+- **查看器** index.html：等距圆柱全景渲染、热点跳转切换场景、底部缩略图切换条、URL 深链、自动旋转、手机陀螺仪
+- **编辑器** editor.html（仅 PC）：添加/重命名/删除场景、标注热点、设置初始视角、导出或直接推送 `project.json` 到 GitHub
 
 技术栈：[Photo Sphere Viewer 5.15.1](https://photo-sphere-viewer.js.org/) + three.js，全部依赖已下载到 `vendor/`，通过 importmap 引用，**不需要 npm / 打包**。
+
+## 零、密码门
+
+全站（含编辑器）有访问密码，输入一次后该设备永久记住，之后无需再登录：
+
+- 当前密码：`714225`
+- 手机端、电脑端通用；换设备/清浏览器数据后需重新输一次
+- 密码在 `js/auth.js` 里以 SHA-256 哈希存放（源码无明文）。**要改密码**：浏览器控制台执行
+  `crypto.subtle.digest('SHA-256', new TextEncoder().encode('新密码')).then(b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join(''))`
+  把输出的哈希替换掉 `js/auth.js` 里的 `PASSWORD_SHA256` 即可
+- 注意：纯静态网站没有服务端，这是"防路人"级别的门禁，懂技术的人仍可能绕过；介意的话需要换成带后端的方案
+
+## 仓库说明
+
+本项目同时放在两个 GitHub 仓库：
+
+| 仓库 | 可见性 | 用途 |
+|---|---|---|
+| [Qinerchen/720panorama](https://github.com/Qinerchen/720panorama) | 公开 | GitHub Pages 发布，改动推送后 1~2 分钟自动上线 |
+| [Qinerchen/720panorama-src](https://github.com/Qinerchen/720panorama-src) | 私有 | 项目源码备份，以后修改用 |
+
+本地目录已配置好两个远端，日常改完代码后一次同步两个仓库：
+
+```bash
+git add .
+git commit -m "说明改动"
+git push origin main   # 推到 Pages 仓库（自动重新部署）
+git push src main      # 推到源码备份仓库
+```
 
 ---
 
@@ -50,6 +80,8 @@ git push -u origin main
 然后同样去 **Settings → Pages** 开启 Pages（`main` / root）。
 
 之后每次修改（包括编辑器推送的 `project.json`）推上去即可自动更新。手机陀螺仪功能**必须 HTTPS**（GitHub Pages 自带），本地 `http://localhost` 上陀螺仪不可用属正常现象。
+
+提示：在线版使用时，编辑器"☁ 保存到 GitHub"里填 `Qinerchen/720panorama`、分支 `main`，即可在手机/其他电脑上改完热点直接推送上线。
 
 ## 三、编辑器用法
 
