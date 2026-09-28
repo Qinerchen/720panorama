@@ -94,7 +94,8 @@ export async function createPSV(container, project, {
     caption: project.title || '',
     navbar: navbar || ['zoom', 'move', 'gyroscope', 'fullscreen', 'caption'],
     lang: { ...PSV_LANG },
-    touchmoveTwoFingers: true,
+    // 单指滑动旋转视角，双指捏合缩放（720云手感）
+    touchmoveTwoFingers: false,
     moveSpeed: 1.2,
     plugins,
   });
